@@ -10,20 +10,22 @@ int	main(void)
 	mylist.push_back(66);
 	mylist.push_back(42);
 
-	std::cout << "Ma liste :" << std::endl;
+	std::cout << YELLOW << "██████████████	Ma liste : ██████████████" << RESET << std::endl;
 	for (std::list<int>::iterator it = mylist.begin(); it != mylist.end(); it++)
 		std::cout << *it << std::endl;
+	std::cout << YELLOW << "██████████████	EASYFIND 42 ██████████████" << RESET << std::endl;
 	try
 	{
 		std::list<int>::iterator res;
 		res = easyfind(mylist,42);
-		std::cout << *res << std::endl;
+		std::cout << GREEN << "res : " << *res << RESET << std::endl;
 
 	}
 	catch(const std::exception& e)
 	{
 		std::cerr << e.what() << '\n';
 	}
+	std::cout << YELLOW << "██████████████	EASYFIND 666 ██████████████" << RESET << std::endl;
 	try
 	{
 		std::list<int>::iterator res2 = easyfind(mylist,666);

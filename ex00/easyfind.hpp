@@ -23,7 +23,7 @@ typename T::iterator	easyfind(T container, int to_find)
 		std::cout << "Value " << BLUE << to_find << RESET << " found in container." << std::endl;
 		return (found);
 	}
-	throw std::runtime_error(RED "Error : Couldnt find it" RESET);
+	throw std::runtime_error(RED "Error : Couldn't find it" RESET);
 }
 
 #endif
