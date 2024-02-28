@@ -15,10 +15,10 @@
 #define UNDER "\033[4m"
 
 template<typename T>
-typename T::iterator	easyfind(T container, int to_find)
+typename T::iterator	easyfind(T *container, int to_find)
 {
-	typename T::iterator found = std::find(container.begin(), container.end(), to_find);
-	if (found != container.end())
+	typename T::iterator found = std::find(container->begin(), container->end(), to_find);
+	if (found != container->end())
 	{
 		std::cout << "Value " << BLUE << to_find << RESET << " found in container." << std::endl;
 		return (found);

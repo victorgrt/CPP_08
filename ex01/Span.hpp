@@ -47,6 +47,21 @@ class Span
 		};
 
 
+		std::vector<int>::iterator getBegin()
+		{
+			return (_span.begin());
+		}
+
+		std::vector<int>::iterator getEnd()
+		{
+			return (--_span.end());
+		}
+
+		void	addNumbersRange2(unsigned int len);
+		void	addNumbersRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
+		// 	_span.insert(_span.end(), begin, end);
+		// }
+
 
 };
 
