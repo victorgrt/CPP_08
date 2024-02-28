@@ -47,6 +47,7 @@ class Span
 		};
 
 
+
 		std::vector<int>::iterator getBegin()
 		{
 			return (_span.begin());
@@ -59,9 +60,7 @@ class Span
 
 		void	addNumbersRange2(unsigned int len);
 		void	addNumbersRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
-		// 	_span.insert(_span.end(), begin, end);
-		// }
-
+		void	showSpan();
 
 };
 

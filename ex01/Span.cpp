@@ -84,6 +84,7 @@ void	Span::addNumbersRange2(unsigned int len)
 
 int	Span::shortestSpan()
 {
+	int small, smallest;
 	if (_span.empty())
 		throw isEmpty();
 	else if (_span.size() == 1)
@@ -91,15 +92,20 @@ int	Span::shortestSpan()
 	std::vector<int> tmp = _span;
 	std::sort(tmp.begin(), tmp.end());
 	int ret = tmp[1] - tmp[0];
+	small = tmp[1];
+	smallest = tmp[0];
 	// std::cout << "Started at " << tmp[1] << "-" << tmp[0] << std::endl;
 	for (size_t i = 0; i < tmp.size() - 1; i++)
 	{
 		if (ret > (tmp[i + 1] - tmp[i]))
 		{
+			small = tmp[i + 1];
+			smallest = tmp[i];
 			// std::cout << "Shortest : " << tmp[i + 1] << "-" << tmp[i] << std::endl;
 			ret = tmp[i + 1] - tmp[i];
 		}
 	}
+	std::cout << "{" << GREEN << " SHORTEST " << RESET << "} : " << ret << " (" << small << " - " << smallest << ")" << std::endl;
 	return (ret);
 }
 
@@ -109,6 +115,28 @@ int	Span::longestSpan()
 		throw isEmpty();
 	else if (_span.size() == 1)
 		throw onlyOne();
-	// std::cout << "Longest => " << *std::max_element(_span.begin(), _span.end()) << "-" << *std::min_element(_span.begin(), _span.end()) << std::endl;
+	std::cout << "{ " << GREEN << "LONGEST" << RESET << "} : " << *std::max_element(_span.begin(), _span.end()) - *std::min_element(_span.begin(), _span.end()) << " (" << *std::max_element(_span.begin(), _span.end()) << " - " << *std::min_element(_span.begin(), _span.end()) << ")" << std::endl;
 	return (*std::max_element(_span.begin(), _span.end()) - *std::min_element(_span.begin(), _span.end()));
+}
+
+void	Span::showSpan()
+{
+	if (_span.empty())
+	{
+		std::cout << BLUE << "_____________________________________________" << RESET << std::endl;
+		std::cout << BLUE << UNDER << "██████████████ PRINTING VECTOR ██████████████" << RESET << std::endl;
+		std::cout << "Vector container is " << RED << "empty" << RESET << " and has a size " << RED << _len << RESET << " allocated." << std::endl;
+		std::cout << BLUE << "█████████████████████████████████████████████" << RESET << std::endl;
+		return ;
+	}
+	std::cout << BLUE << "_____________________________________________" << RESET << std::endl;
+	std::cout << BLUE << UNDER << "██████████████ PRINTING VECTOR ██████████████" << RESET << std::endl;
+	std::cout << "Vector's " << GREEN << "size" RESET << " : " << GREEN << _len << RESET << std::endl;
+	int i = 0;
+	for (std::vector<int>::iterator it = _span.begin(); it != _span.end(); it++)
+	{
+		std::cout << "vector[" << i << "] = " << *it << std::endl;
+		i++;
+	}
+	std::cout << BLUE << "█████████████████████████████████████████████" << RESET << std::endl;
 }
