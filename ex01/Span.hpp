@@ -19,17 +19,23 @@ class Span
 	private :
 		std::vector<int> _span;
 		int	_len;
+		unsigned int _sizeAdded;
+		Span();
 	public :
 		Span(unsigned int n);
+		Span(const Span &copie);
 		~Span();
 		Span &operator=(const Span &copie);
 
-		std::vector<int> getTab();
+		void	addNumbersRange(unsigned int len);
+		void	addNumber(int N);
+		void	showSpan();
 
-		void	addNumber(int N); //si full throw exception
-		int		shortestSpan(); //pour les deux throw excpetion si pas de span genre vide ou 1 nb
+		int		shortestSpan();
 		int		longestSpan();
-		
+
+		std::vector<int>::iterator getBegin(){return (_span.begin());}
+		std::vector<int>::iterator getEnd(){return (--_span.end());}
 
 		class isFull : public std::exception {
 			public:
@@ -46,22 +52,10 @@ class Span
 				virtual const char *what(void) const throw();
 		};
 
-
-
-		std::vector<int>::iterator getBegin()
-		{
-			return (_span.begin());
-		}
-
-		std::vector<int>::iterator getEnd()
-		{
-			return (--_span.end());
-		}
-
-		void	addNumbersRange2(unsigned int len);
-		void	addNumbersRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
-		void	showSpan();
-
+		class inputError : public std::exception {
+			public:
+				virtual const char *what(void) const throw();
+		};
 };
 
 #endif

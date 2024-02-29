@@ -66,12 +66,17 @@ int	main(void)
 		srand(time(NULL)); //on genere une seed en fonction du temps
 		Span	myrand(50);
 		myrand.showSpan();
-		
-		myrand.addNumbersRange2(50);
+		myrand.addNumbersRange(-2);
+		myrand.addNumbersRange(48);
+		myrand.showSpan();
+		myrand.addNumbersRange(2);
+		myrand.showSpan();
+		myrand.addNumbersRange(-1);
 		myrand.showSpan();
 
 		myrand.shortestSpan();
 		myrand.longestSpan();
+
 	}
 	catch(const std::exception& e)
 	{
