@@ -3,6 +3,9 @@
 
 #include <iostream>
 #include <stack>
+#include <vector>
+#include <deque>
+#include <list>
 #include <iterator>
 
 template <typename T>
@@ -42,16 +45,6 @@ class MutantStack : public std::stack<T>
 		reverse_iterator rend(void)
 		{
 			return this->c.rend();
-		}
-
-		const_reverse_iterator crbegin(void)
-		{
-			return this->c.crbegin();
-		}
-
-		const_reverse_iterator crend(void)
-		{
-			return this->c.crend();
 		}
 };
 
