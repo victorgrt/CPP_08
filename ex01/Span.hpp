@@ -56,6 +56,11 @@ class Span
 			public:
 				virtual const char *what(void) const throw();
 		};
+
+		class tooBig : public std::exception {
+			public:
+				virtual const char *what(void) const throw();
+		};
 };
 
 #endif

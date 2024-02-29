@@ -33,6 +33,8 @@ void	Span::addNumbersRange(unsigned int adding_nb)
 {
 	if (adding_nb >= 2147483647)
 		throw inputError();
+	else if (_span.empty() && adding_nb > static_cast<unsigned int>(_len))
+		throw tooBig();
 	else if (_sizeAdded + adding_nb >= static_cast<unsigned int>(_len))
 		throw isFull();
 	int begin = rand() / 10000000;
@@ -43,7 +45,7 @@ void	Span::addNumbersRange(unsigned int adding_nb)
 	_sizeAdded++;
 	while (_span.begin() != --_span.end())
 	{
-		if (_sizeAdded >= static_cast<unsigned int>(_len)) //-2 parce qu'on en a push 2 avant.
+		if (_sizeAdded >= static_cast<unsigned int>(_len) - 2) //-2 parce qu'on en a push 2 avant.
 			break;
 		int random = rand() / 1000000;
 		addNumber(random);
@@ -129,4 +131,9 @@ const char *Span::onlyOne::what() const throw()
 const char *Span::inputError::what() const throw()
 {
 	return (RED "Error thrown : Span needs a positive (not too big) positive number." RESET);
+}
+
+const char *Span::tooBig::what() const throw()
+{
+	return (RED "Error thrown : trying to add to much into the span." RESET);
 }
